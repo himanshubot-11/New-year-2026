@@ -8,25 +8,12 @@
 </head>
 <body>
     <div class="slideshow">
-        <!-- Floating Emojis Container -->
-        <div class="emojis-container">
-            <span class="emoji">💕</span>
-            <span class="emoji">❤️</span>
-            <span class="emoji">🥰</span>
-            <span class="emoji">😘</span>
-            <span class="emoji">🌹</span>
-            <span class="emoji">💖</span>
-            <span class="emoji">✨</span>
-            <span class="emoji">😍</span>
-            <span class="emoji">💋</span>
-            <span class="emoji">🫶</span>
-            <span class="emoji">🌸</span>
-            <span class="emoji">💗</span>
-        </div>
+        <!-- Floating Emojis All Over Screen -->
+        <div class="emojis-container"></div>
 
         <!-- Slides -->
         <div class="slide active">
-            <img class="photo" src="https://media.gettyimages.com/id/1984822000/photo/couple-watching-fireworks.jpg?s=612x612&w=gi&k=20&c=6onbdcfeIoz6tXayKJmsN5E2WgJTYXMke7qTTsw7Paw=" alt="Romantic couple watching fireworks">
+            <img class="photo" src="https://media.gettyimages.com/id/1984822000/photo/couple-watching-fireworks.jpg?s=612x612&w=gi&k=20&c=6onbdcfeIoz6tXayKJmsN5E2WgJTYXMke7qTTsw7Paw=" alt="Couple watching fireworks">
             <div class="text big-text">Meri Pasandida Aurat 💕</div>
             <div class="hearts">❤️ ❤️ ❤️</div>
         </div>
@@ -38,68 +25,84 @@
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://media.istockphoto.com/id/2169723518/photo/couple-with-sparklers-on-a-new-years-eve.jpg?s=612x612&w=0&k=20&c=g1z8UnVu6OzrOFKj5RaHjR1qrg3u-HHhw7pe4c4M4ds=" alt="Couple celebrating with sparklers">
+            <img class="photo" src="https://media.istockphoto.com/id/2169723518/photo/couple-with-sparklers-on-a-new-years-eve.jpg?s=612x612&w=0&k=20&c=g1z8UnVu6OzrOFKj5RaHjR1qrg3u-HHhw7pe4c4M4ds=" alt="Couple with sparklers">
             <div class="text">Tu meri duniya ko roz roshan karti hai</div>
             <div class="hearts">🌟 ❤️ 🌟</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://media.istockphoto.com/id/628125996/photo/celebrating-with-bubbly.jpg?s=612x612&w=0&k=20&c=UMeLX2IV3kWjZX0hRJwA2vatebKNdd0Xkj-zUFdi-6k=" alt="Couple toasting champagne">
+            <img class="photo" src="https://media.istockphoto.com/id/628125996/photo/celebrating-with-bubbly.jpg?s=612x612&w=0&k=20&c=UMeLX2IV3kWjZX0hRJwA2vatebKNdd0Xkj-zUFdi-6k=" alt="Couple toasting">
             <div class="text big-text">Jaise hi 2025 khatam ho raha hai...</div>
             <div class="text">Main bas ye kehna chahta hoon...</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://www.shutterstock.com/image-photo/pink-glittering-2026-new-year-260nw-2704045279.jpg" alt="Pink glitter Happy New Year 2026">
+            <img class="photo" src="https://www.shutterstock.com/image-photo/pink-glittering-2026-new-year-260nw-2704045279.jpg" alt="2026 glitter">
             <div class="text big-text">Happy New Year 2026</div>
             <div class="text">Meri Pyar, Meri Pasandida Aurat 👑💕</div>
             <div class="hearts">❤️💖❤️💖❤️</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://media.istockphoto.com/id/164483331/photo/romantic-couple-holding-a-red-heart.jpg?s=612x612&w=is&k=20&c=zJsPISErkgsAJe32WNDxW0nn560ROLmQz_M4a6Jx82U=" alt="Couple holding red heart">
+            <img class="photo" src="https://media.istockphoto.com/id/164483331/photo/romantic-couple-holding-a-red-heart.jpg?s=612x612&w=is&k=20&c=zJsPISErkgsAJe32WNDxW0nn560ROLmQz_M4a6Jx82U=" alt="Holding heart">
             <div class="text">2026 mein tere saath aur zyada adventures ka intezar hai!</div>
             <div class="text big-text">Main Tujhe Hamesha Pyar Karta Hoon ❤️</div>
         </div>
 
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
+        <!-- Navigation -->
+        <div class="nav-center">
             <button class="prev-btn" onclick="changeSlide(-1)">← Previous</button>
-            <button class="next-btn" onclick="changeSlide(1)">Next →</button>
+            <button class="next-btn" onclick="changeSlide(1)">💕 Next 💕</button>
         </div>
     </div>
 
     <script>
+        // Generate 40 random floating emojis
+        const emojisContainer = document.querySelector('.emojis-container');
+        const emojis = ['💕', '❤️', '🥰', '😘', '🌹', '💖', '✨', '😍', '💋', '🫶', '🌸', '💗', '😊', '🌟', '💞'];
+        
+        for (let i = 0; i < 40; i++) {
+            const emoji = document.createElement('span');
+            emoji.classList.add('emoji');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.animationDelay = Math.random() * 10 + 's';
+            emoji.style.animationDuration = (10 + Math.random() * 10) + 's';
+            emojisContainer.appendChild(emoji);
+        }
+
+        // Navigation logic
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
 
         function showSlide(n) {
             slides[currentSlide].classList.remove('active');
             currentSlide = (n + totalSlides) % totalSlides;
             slides[currentSlide].classList.add('active');
 
-            // Update button visibility
-            document.querySelector('.prev-btn').style.display = currentSlide === 0 ? 'none' : 'block';
-            document.querySelector('.next-btn').style.display = currentSlide === totalSlides - 1 ? 'none' : 'block';
+            // Update buttons
+            prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
+            nextBtn.innerHTML = currentSlide === totalSlides - 1 ? 'Done ❤️' : '💕 Next 💕';
         }
 
         function changeSlide(direction) {
             showSlide(currentSlide + direction);
         }
 
-        // Tap/click anywhere to go next
+        // Tap anywhere to next (except buttons)
         document.querySelector('.slideshow').addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-buttons')) {
+            if (!e.target.closest('.nav-center')) {
                 if (currentSlide < totalSlides - 1) {
                     changeSlide(1);
                 }
             }
         });
 
-        // Initial button state
-        document.querySelector('.prev-btn').style.display = 'none';
-        if (totalSlides === 1) document.querySelector('.next-btn').style.display = 'none';
+        // Initial state
+        prevBtn.style.display = 'none';
     </script>
 </body>
 </html>
