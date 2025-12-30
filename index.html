@@ -8,9 +8,9 @@
 </head>
 <body>
     <div class="slideshow">
-        <!-- Working Royalty-Free Romantic Piano Music -->
+        <!-- Reliable Romantic Piano Music -->
         <audio id="bg-music" loop>
-            <source src="https://cdn.pixabay.com/download/audio/2022/07/22/audio_3e6f3b1e5f.mp3?filename=gentle-romantic-piano-instrumental-royalty-free-music-1288.mp3" type="audio/mpeg">
+            <source src="https://cdn.pixabay.com/download/audio/2024/04/12/audio_1b1a3a3a3b.mp3?filename=romantic-piano-21458.mp3" type="audio/mpeg">
         </audio>
 
         <!-- Mute Button -->
@@ -22,40 +22,40 @@
         <!-- Floating Emojis -->
         <div class="emojis-container"></div>
 
-        <!-- Slides with Reliable Images -->
+        <!-- Slides with Quote-Style Romantic Images -->
         <div class="slide">
-            <img class="photo" src="https://images.pexels.com/photos/1686937/pexels-photo-1686937.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple fireworks">
+            <img class="photo" src="https://www.shutterstock.com/image-photo/blurry-image-romantic-couple-sharing-2619925913" alt="Couple kiss fireworks">
             <div class="text big-text">Meri Pasandida Aurat 💕</div>
             <div class="hearts">❤️ ❤️ ❤️</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://images.pexels.com/photos/247304/pexels-photo-247304.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple embrace">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/loving-couple-shares-intimate-kiss-silhouette-against-breathtaking-night-sky-illuminated-vibrant-red-heart-shaped-402540130.jpg" alt="Couple silhouette heart">
             <div class="text">Har lamha tere saath jaise jadoo hai...</div>
             <div class="hearts">✨ 💖 ✨</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://images.pexels.com/photos/1969354/pexels-photo-1969354.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple celebration">
+            <img class="photo" src="https://www.shutterstock.com/image-photo/happy-loving-couple-watching-fireworks-2418808647" alt="Couple watching fireworks">
             <div class="text">Tu meri duniya ko roz roshan karti hai</div>
             <div class="hearts">🌟 ❤️ 🌟</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple toast">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/couple-kissing-under-stunning-fireworks-show-romantic-couple-kissing-under-dazzling-fireworks-display-celebrate-milestones-421389776.jpg" alt="Couple kiss fireworks">
             <div class="text big-text">Jaise hi 2025 khatam ho raha hai...</div>
             <div class="text">Main bas ye kehna chahta hoon...</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://images.pexels.com/photos/2666663/pexels-photo-2666663.jpeg?auto=compress&cs=tinysrgb&w=800" alt="2026 sparkles">
+            <img class="photo" src="https://www.creativefabrica.com/wp-content/uploads/2022/12/18/couple-kiss-on-new-years-eve-Graphics-53124905-1-1-580x387.jpg" alt="New Year couple kiss">
             <div class="text big-text">Happy New Year 2026</div>
             <div class="text">Meri Pyar, Meri Pasandida Aurat 👑💕</div>
             <div class="hearts">❤️💖❤️💖❤️</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://images.pexels.com/photos/1570624/pexels-photo-1570624.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Couple heart">
+            <img class="photo" src="https://www.shutterstock.com/image-photo/happy-loving-couple-watching-fireworks-2418808637" alt="Couple fireworks celebration">
             <div class="text">2026 mein tere saath aur zyada adventures ka intezar hai!</div>
             <div class="text big-text">Main Tujhe Hamesha Pyar Karta Hoon ❤️</div>
         </div>
@@ -87,7 +87,7 @@
         }
 
         function startExperience() {
-            music.play().catch(() => console.log("Play interrupted")); // Safe play
+            music.play();
 
             // Floating emojis
             const emojisList = ['💕','❤️','🥰','😘','🌹','💖','✨','😍','💋','🫶','🌸','💗','😊','🌟','💞','🎉','🥂'];
@@ -123,7 +123,7 @@
             showSlide(current + dir);
         }
 
-        // Tap to next after start
+        // Tap to next
         document.querySelector('.slideshow').addEventListener('click', (e) => {
             if (startBtn.style.display === 'none' && !e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
                 if (current < total - 1) changeSlide(1);
