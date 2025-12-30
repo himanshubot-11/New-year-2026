@@ -21,7 +21,6 @@ body {
     cursor: pointer;
 }
 
-/* Mute Button */
 #mute-btn {
     position: absolute;
     top: 15px;
@@ -38,7 +37,6 @@ body {
     z-index: 10;
 }
 
-/* Floating Emojis - Random Everywhere */
 .emojis-container {
     position: absolute;
     width: 100%;
@@ -61,7 +59,6 @@ body {
     100% { opacity: 0; transform: translateY(-150px) rotate(360deg) scale(1); }
 }
 
-/* Slides */
 .slide {
     position: absolute;
     top: 0; left: 0;
@@ -124,7 +121,6 @@ body {
     50%     { transform: translateY(-25px) rotate(5deg); }
 }
 
-/* IMPROVED NAVIGATION BUTTONS - NOW CLEARLY VISIBLE */
 .nav-center {
     position: absolute;
     bottom: 40px;
@@ -136,9 +132,9 @@ body {
 
 .prev-btn, .next-btn {
     pointer-events: all;
-    background: rgba(255, 255, 255, 0.85);   /* Much more opaque */
-    color: #ff69b4;                          /* Hot pink text for contrast */
-    border: 3px solid #ff69b4;                /* Pink border */
+    background: rgba(255, 255, 255, 0.9);
+    color: #ff1493;
+    border: 3px solid #ff1493;
     padding: 16px 40px;
     font-size: 24px;
     font-weight: bold;
@@ -147,22 +143,13 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: all 0.4s ease;
     margin: 0 15px;
-    min-width: 200px;
-}
-
-.next-btn {
-    background: rgba(255, 255, 255, 0.95);   /* Even more solid for main button */
-    color: #ff1493;                          /* Deep pink */
-    border: 3px solid #ff1493;
 }
 
 .prev-btn:hover, .next-btn:hover {
-    transform: translateY(-8px) scale(1.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     background: white;
+    transform: translateY(-8px) scale(1.08);
 }
 
-/* Subtle Background Pulse */
 body::before {
     content: '';
     position: absolute;
