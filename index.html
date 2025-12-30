@@ -8,46 +8,45 @@
 </head>
 <body>
     <div class="slideshow">
-        <!-- Romantic Background Music -->
-        <audio id="bg-music" loop autoplay>
-            <source src="https://cdn.pixabay.com/download/audio/2024/07/31/audio_0b0f0a7e5a.mp3?filename=beloved-196866.mp3" type="audio/mpeg">
+        <!-- Romantic Background Music (starts on user interaction) -->
+        <audio id="bg-music" loop>
+            <source src="https://cdn.pixabay.com/download/audio/2023/03/19/audio_2e6f3a1a00.mp3?filename=a-romantic-piano-122993.mp3" type="audio/mpeg">
         </audio>
 
-        <!-- Mute Button -->
+        <!-- Mute Button (appears after start) -->
         <button id="mute-btn" onclick="toggleMute()">🔊</button>
+
+        <!-- Start Button (big and centered) -->
+        <button id="start-btn" onclick="startExperience()">💕 Start 💕</button>
 
         <!-- Floating Emojis Container -->
         <div class="emojis-container"></div>
 
-        <!-- Slide 1 -->
-        <div class="slide active">
+        <!-- Slides (hidden until start) -->
+        <div class="slide">
             <img class="photo" src="https://images.unsplash.com/photo-1519742866993-66d3cfef8401?w=800&q=80" alt="Couple">
             <div class="text big-text">Meri Pasandida Aurat 💕</div>
             <div class="hearts">❤️ ❤️ ❤️</div>
         </div>
 
-        <!-- Slide 2 -->
         <div class="slide">
             <img class="photo" src="https://images.unsplash.com/photo-1606800699441-85e4a0f2e2e7?w=800&q=80" alt="Couple">
             <div class="text">Har lamha tere saath jaise jadoo hai...</div>
             <div class="hearts">✨ 💖 ✨</div>
         </div>
 
-        <!-- Slide 3 -->
         <div class="slide">
             <img class="photo" src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&q=80" alt="Couple">
             <div class="text">Tu meri duniya ko roz roshan karti hai</div>
             <div class="hearts">🌟 ❤️ 🌟</div>
         </div>
 
-        <!-- Slide 4 -->
         <div class="slide">
             <img class="photo" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Couple">
             <div class="text big-text">Jaise hi 2025 khatam ho raha hai...</div>
             <div class="text">Main bas ye kehna chahta hoon...</div>
         </div>
 
-        <!-- Slide 5 -->
         <div class="slide">
             <img class="photo" src="https://images.unsplash.com/photo-1607604159317-3e0e1d8b0f5c?w=800&q=80" alt="2026">
             <div class="text big-text">Happy New Year 2026</div>
@@ -55,14 +54,13 @@
             <div class="hearts">❤️💖❤️💖❤️</div>
         </div>
 
-        <!-- Slide 6 -->
         <div class="slide">
             <img class="photo" src="https://images.unsplash.com/photo-1533631736999-6c2a4fc8334b?w=800&q=80" alt="Couple">
             <div class="text">2026 mein tere saath aur zyada adventures ka intezar hai!</div>
             <div class="text big-text">Main Tujhe Hamesha Pyar Karta Hoon ❤️</div>
         </div>
 
-        <!-- Navigation -->
+        <!-- Navigation (appears after start) -->
         <div class="nav-center">
             <button class="prev-btn" onclick="changeSlide(-1)">← Previous</button>
             <button class="next-btn" onclick="changeSlide(1)">💕 Next 💕</button>
@@ -70,33 +68,51 @@
     </div>
 
     <script>
-        // Music
         const music = document.getElementById('bg-music');
-        music.volume = 0.3;
-        function toggleMute() {
-            music.muted = !music.muted;
-            document.getElementById('mute-btn').textContent = music.muted ? '🔇' : '🔊';
-        }
-
-        // Generate 50 Floating Emojis
+        const muteBtn = document.getElementById('mute-btn');
+        const startBtn = document.getElementById('start-btn');
+        const navCenter = document.querySelector('.nav-center');
         const container = document.querySelector('.emojis-container');
-        const emojisList = ['💕','❤️','🥰','😘','🌹','💖','✨','😍','💋','🫶','🌸','💗','😊','🌟','💞','🎉','🥂'];
-        for (let i = 0; i < 50; i++) {
-            const e = document.createElement('span');
-            e.className = 'emoji';
-            e.textContent = emojisList[Math.floor(Math.random() * emojisList.length)];
-            e.style.left = `${Math.random() * 100}%`;
-            e.style.animationDelay = `${Math.random() * 15}s`;
-            e.style.animationDuration = `${12 + Math.random() * 10}s`;
-            container.appendChild(e);
-        }
-
-        // Slideshow Logic
-        let current = 0;
         const slides = document.querySelectorAll('.slide');
         const total = slides.length;
         const nextBtn = document.querySelector('.next-btn');
         const prevBtn = document.querySelector('.prev-btn');
+        let current = 0;
+
+        music.volume = 0.3;
+
+        function toggleMute() {
+            music.muted = !music.muted;
+            muteBtn.textContent = music.muted ? '🔇' : '🔊';
+        }
+
+        function startExperience() {
+            // Play music (user interaction unlocks autoplay)
+            music.play();
+
+            // Generate floating emojis
+            const emojisList = ['💕','❤️','🥰','😘','🌹','💖','✨','😍','💋','🫶','🌸','💗','😊','🌟','💞','🎉','🥂'];
+            for (let i = 0; i < 50; i++) {
+                const e = document.createElement('span');
+                e.className = 'emoji';
+                e.textContent = emojisList[Math.floor(Math.random() * emojisList.length)];
+                e.style.left = `${Math.random() * 100}%`;
+                e.style.animationDelay = `${Math.random() * 15}s`;
+                e.style.animationDuration = `${12 + Math.random() * 10}s`;
+                container.appendChild(e);
+            }
+
+            // Show first slide
+            slides[0].classList.add('active');
+
+            // Hide start button, show mute and nav
+            startBtn.style.display = 'none';
+            muteBtn.style.display = 'block';
+            navCenter.style.display = 'block';
+
+            // Hide previous initially
+            prevBtn.style.display = 'none';
+        }
 
         function showSlide(n) {
             slides[current].classList.remove('active');
@@ -110,15 +126,12 @@
             showSlide(current + dir);
         }
 
-        // Tap anywhere to next
+        // Tap anywhere to next (after start)
         document.querySelector('.slideshow').addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
+            if (startBtn.style.display === 'none' && !e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
                 if (current < total - 1) changeSlide(1);
             }
         });
-
-        // Hide Previous on start
-        prevBtn.style.display = 'none';
     </script>
 </body>
 </html>
