@@ -8,6 +8,15 @@
 </head>
 <body>
     <div class="slideshow">
+        <!-- Background Music -->
+        <audio id="bg-music" loop autoplay volume="0.3">
+            <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Mute/Unmute Button (small, discreet at top-right) -->
+        <button id="mute-btn" onclick="toggleMute()">🔊</button>
+
         <!-- Floating Emojis All Over Screen -->
         <div class="emojis-container"></div>
 
@@ -57,52 +66,20 @@
     </div>
 
     <script>
+        // Background Music Control
+        const music = document.getElementById('bg-music');
+        const muteBtn = document.getElementById('mute-btn');
+        
+        function toggleMute() {
+            if (music.muted) {
+                music.muted = false;
+                muteBtn.textContent = '🔊';
+            } else {
+                music.muted = true;
+                muteBtn.textContent = '🔇';
+            }
+        }
+
         // Generate 40 random floating emojis
         const emojisContainer = document.querySelector('.emojis-container');
-        const emojis = ['💕', '❤️', '🥰', '😘', '🌹', '💖', '✨', '😍', '💋', '🫶', '🌸', '💗', '😊', '🌟', '💞'];
-        
-        for (let i = 0; i < 40; i++) {
-            const emoji = document.createElement('span');
-            emoji.classList.add('emoji');
-            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            emoji.style.left = Math.random() * 100 + '%';
-            emoji.style.animationDelay = Math.random() * 10 + 's';
-            emoji.style.animationDuration = (10 + Math.random() * 10) + 's';
-            emojisContainer.appendChild(emoji);
-        }
-
-        // Navigation logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-        const nextBtn = document.querySelector('.next-btn');
-        const prevBtn = document.querySelector('.prev-btn');
-
-        function showSlide(n) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (n + totalSlides) % totalSlides;
-            slides[currentSlide].classList.add('active');
-
-            // Update buttons
-            prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
-            nextBtn.innerHTML = currentSlide === totalSlides - 1 ? 'Done ❤️' : '💕 Next 💕';
-        }
-
-        function changeSlide(direction) {
-            showSlide(currentSlide + direction);
-        }
-
-        // Tap anywhere to next (except buttons)
-        document.querySelector('.slideshow').addEventListener('click', function(e) {
-            if (!e.target.closest('.nav-center')) {
-                if (currentSlide < totalSlides - 1) {
-                    changeSlide(1);
-                }
-            }
-        });
-
-        // Initial state
-        prevBtn.style.display = 'none';
-    </script>
-</body>
-</html>
+        const emojis = ['💕', '❤️', '🥰', '😘', '🌹', '💖',
