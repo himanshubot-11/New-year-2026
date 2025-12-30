@@ -21,7 +21,24 @@ body {
     cursor: pointer;
 }
 
-/* Random Floating Emojis Everywhere */
+/* Mute Button */
+#mute-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Floating Emojis - Random Everywhere */
 .emojis-container {
     position: absolute;
     width: 100%;
@@ -38,28 +55,17 @@ body {
 }
 
 @keyframes floatUp {
-    0% {
-        opacity: 0;
-        transform: translateY(100vh) rotate(0deg) scale(0.5);
-    }
-    15% {
-        opacity: 0.8;
-    }
-    85% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-150px) rotate(360deg) scale(1);
-    }
+    0%   { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.6); }
+    15%  { opacity: 0.9; }
+    85%  { opacity: 0.9; }
+    100% { opacity: 0; transform: translateY(-150px) rotate(360deg) scale(1); }
 }
 
+/* Slides */
 .slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 1.5s ease, transform 1.5s ease;
@@ -70,7 +76,7 @@ body {
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(5px);
     z-index: 2;
 }
@@ -114,12 +120,11 @@ body {
 }
 
 @keyframes floatHearts {
-    0%   { transform: translateY(0) rotate(0deg); }
-    50%  { transform: translateY(-25px) rotate(5deg); }
-    100% { transform: translateY(0) rotate(0deg); }
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%     { transform: translateY(-25px) rotate(5deg); }
 }
 
-/* Centered Beautiful Button */
+/* Navigation Button */
 .nav-center {
     position: absolute;
     bottom: 40px;
@@ -131,39 +136,39 @@ body {
 
 .prev-btn, .next-btn {
     pointer-events: all;
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255,255,255,0.4);
     color: white;
     border: none;
-    padding: 14px 32px;
-    font-size: 22px;
+    padding: 16px 40px;
+    font-size: 24px;
     font-weight: bold;
     border-radius: 50px;
     backdrop-filter: blur(15px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     transition: all 0.4s ease;
-    margin: 0 10px;
-    min-width: 180px;
+    margin: 0 15px;
 }
 
 .next-btn {
-    background: rgba(255, 255, 255, 0.45);
+    background: rgba(255,255,255,0.5);
 }
 
 .prev-btn:hover, .next-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
+/* Subtle Background Pulse */
 body::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent);
     animation: pulse 15s infinite ease-in-out;
     pointer-events: none;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(1.05); }
+    0%,100% { opacity: 0.3; transform: scale(1); }
+    50%     { opacity: 0.6; transform: scale(1.05); }
 }
