@@ -8,57 +8,56 @@
 </head>
 <body>
     <div class="slideshow">
-        <!-- Working Romantic Background Music -->
+        <!-- Romantic Background Music -->
         <audio id="bg-music" loop autoplay>
             <source src="https://cdn.pixabay.com/download/audio/2024/07/31/audio_0b0f0a7e5a.mp3?filename=beloved-196866.mp3" type="audio/mpeg">
-            Your browser does not support audio.
         </audio>
 
         <!-- Mute Button -->
         <button id="mute-btn" onclick="toggleMute()">🔊</button>
 
-        <!-- Floating Emojis -->
+        <!-- Floating Emojis Container -->
         <div class="emojis-container"></div>
 
         <!-- Slide 1 -->
         <div class="slide active">
-            <img class="photo" src="https://images.unsplash.com/photo-1519742866993-66d3cfef8401?w=800&q=80" alt="Couple fireworks">
+            <img class="photo" src="https://images.unsplash.com/photo-1519742866993-66d3cfef8401?w=800&q=80" alt="Couple">
             <div class="text big-text">Meri Pasandida Aurat 💕</div>
             <div class="hearts">❤️ ❤️ ❤️</div>
         </div>
 
         <!-- Slide 2 -->
         <div class="slide">
-            <img class="photo" src="https://images.unsplash.com/photo-1606800699441-85e4a0f2e2e7?w=800&q=80" alt="Couple sparkles">
+            <img class="photo" src="https://images.unsplash.com/photo-1606800699441-85e4a0f2e2e7?w=800&q=80" alt="Couple">
             <div class="text">Har lamha tere saath jaise jadoo hai...</div>
             <div class="hearts">✨ 💖 ✨</div>
         </div>
 
         <!-- Slide 3 -->
         <div class="slide">
-            <img class="photo" src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&q=80" alt="Couple celebration">
+            <img class="photo" src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=800&q=80" alt="Couple">
             <div class="text">Tu meri duniya ko roz roshan karti hai</div>
             <div class="hearts">🌟 ❤️ 🌟</div>
         </div>
 
         <!-- Slide 4 -->
         <div class="slide">
-            <img class="photo" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Champagne toast">
+            <img class="photo" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Couple">
             <div class="text big-text">Jaise hi 2025 khatam ho raha hai...</div>
             <div class="text">Main bas ye kehna chahta hoon...</div>
         </div>
 
         <!-- Slide 5 -->
         <div class="slide">
-            <img class="photo" src="https://images.unsplash.com/photo-1607604159317-3e0e1d8b0f5c?w=800&q=80" alt="2026 glitter">
+            <img class="photo" src="https://images.unsplash.com/photo-1607604159317-3e0e1d8b0f5c?w=800&q=80" alt="2026">
             <div class="text big-text">Happy New Year 2026</div>
             <div class="text">Meri Pyar, Meri Pasandida Aurat 👑💕</div>
             <div class="hearts">❤️💖❤️💖❤️</div>
         </div>
 
-        <!-- Slide 6 (Last) -->
+        <!-- Slide 6 -->
         <div class="slide">
-            <img class="photo" src="https://images.unsplash.com/photo-1533631736999-6c2a4fc8334b?w=800&q=80" alt="Holding heart">
+            <img class="photo" src="https://images.unsplash.com/photo-1533631736999-6c2a4fc8334b?w=800&q=80" alt="Couple">
             <div class="text">2026 mein tere saath aur zyada adventures ka intezar hai!</div>
             <div class="text big-text">Main Tujhe Hamesha Pyar Karta Hoon ❤️</div>
         </div>
@@ -79,20 +78,20 @@
             document.getElementById('mute-btn').textContent = music.muted ? '🔇' : '🔊';
         }
 
-        // Floating Emojis
+        // Generate 50 Floating Emojis
         const container = document.querySelector('.emojis-container');
         const emojisList = ['💕','❤️','🥰','😘','🌹','💖','✨','😍','💋','🫶','🌸','💗','😊','🌟','💞','🎉','🥂'];
         for (let i = 0; i < 50; i++) {
-            const emoji = document.createElement('span');
-            emoji.className = 'emoji';
-            emoji.textContent = emojisList[Math.floor(Math.random() * emojisList.length)];
-            emoji.style.left = Math.random() * 100 + '%';
-            emoji.style.animationDelay = Math.random() * 15 + 's';
-            emoji.style.animationDuration = (12 + Math.random() * 10) + 's';
-            container.appendChild(emoji);
+            const e = document.createElement('span');
+            e.className = 'emoji';
+            e.textContent = emojisList[Math.floor(Math.random() * emojisList.length)];
+            e.style.left = `${Math.random() * 100}%`;
+            e.style.animationDelay = `${Math.random() * 15}s`;
+            e.style.animationDuration = `${12 + Math.random() * 10}s`;
+            container.appendChild(e);
         }
 
-        // Slides
+        // Slideshow Logic
         let current = 0;
         const slides = document.querySelectorAll('.slide');
         const total = slides.length;
@@ -111,13 +110,14 @@
             showSlide(current + dir);
         }
 
-        // Tap to next
+        // Tap anywhere to next
         document.querySelector('.slideshow').addEventListener('click', (e) => {
             if (!e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
                 if (current < total - 1) changeSlide(1);
             }
         });
 
+        // Hide Previous on start
         prevBtn.style.display = 'none';
     </script>
 </body>
