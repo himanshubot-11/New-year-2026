@@ -18,10 +18,10 @@ body {
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    cursor: pointer; /* Indicates tappable */
+    cursor: pointer;
 }
 
-/* Floating Romantic Emojis */
+/* Random Floating Emojis Everywhere */
 .emojis-container {
     position: absolute;
     width: 100%;
@@ -32,29 +32,26 @@ body {
 
 .emoji {
     position: absolute;
-    font-size: 30px;
+    font-size: 28px;
     opacity: 0;
-    animation: floatUp 10s infinite ease-in-out;
+    animation: floatUp linear infinite;
 }
 
-.emoji:nth-child(1) { left: 10%; animation-delay: 0s; }
-.emoji:nth-child(2) { left: 20%; animation-delay: 2s; }
-.emoji:nth-child(3) { left: 30%; animation-delay: 4s; }
-.emoji:nth-child(4) { left: 70%; animation-delay: 1s; }
-.emoji:nth-child(5) { left: 80%; animation-delay: 3s; }
-.emoji:nth-child(6) { left: 90%; animation-delay: 5s; }
-.emoji:nth-child(7) { left: 5%; animation-delay: 6s; }
-.emoji:nth-child(8) { left: 15%; animation-delay: 7s; }
-.emoji:nth-child(9) { left: 85%; animation-delay: 8s; }
-.emoji:nth-child(10) { left: 25%; animation-delay: 9s; }
-.emoji:nth-child(11) { left: 75%; animation-delay: 0.5s; }
-.emoji:nth-child(12) { left: 50%; animation-delay: 4.5s; }
-
 @keyframes floatUp {
-    0% { opacity: 0; transform: translateY(100vh) rotate(0deg); }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-100px) rotate(360deg); }
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+    }
+    15% {
+        opacity: 0.8;
+    }
+    85% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) rotate(360deg) scale(1);
+    }
 }
 
 .slide {
@@ -64,6 +61,8 @@ body {
     width: 100%;
     height: 100%;
     opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 1.5s ease, transform 1.5s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,8 +72,6 @@ body {
     box-sizing: border-box;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px);
-    transform: scale(0.95);
-    transition: opacity 1.5s ease, transform 1.5s ease;
     z-index: 2;
 }
 
@@ -103,7 +100,6 @@ body {
 .big-text {
     font-size: 42px;
     font-weight: bold;
-    margin: 8px 0;
 }
 
 .hearts {
@@ -123,36 +119,39 @@ body {
     100% { transform: translateY(0) rotate(0deg); }
 }
 
-/* Navigation Buttons */
-.nav-buttons {
+/* Centered Beautiful Button */
+.nav-center {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-sizing: border-box;
+    text-align: center;
     z-index: 3;
-    pointer-events: none; /* So tap on rest of screen works */
+    pointer-events: none;
 }
 
 .prev-btn, .next-btn {
     pointer-events: all;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.35);
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 18px;
+    padding: 14px 32px;
+    font-size: 22px;
+    font-weight: bold;
     border-radius: 50px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    cursor: pointer;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.4s ease;
+    margin: 0 10px;
+    min-width: 180px;
+}
+
+.next-btn {
+    background: rgba(255, 255, 255, 0.45);
 }
 
 .prev-btn:hover, .next-btn:hover {
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(1.1);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
 body::before {
