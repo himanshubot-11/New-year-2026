@@ -21,7 +21,6 @@ body {
     cursor: pointer;
 }
 
-/* Big Start Button (visible at beginning) */
 #start-btn {
     position: absolute;
     top: 50%;
@@ -38,15 +37,12 @@ body {
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     cursor: pointer;
     z-index: 15;
-    transition: all 0.4s ease;
 }
 
 #start-btn:hover {
     transform: translate(-50%, -50%) scale(1.1);
-    background: white;
 }
 
-/* Mute Button (hidden until start) */
 #mute-btn {
     position: absolute;
     top: 15px;
@@ -64,7 +60,6 @@ body {
     display: none;
 }
 
-/* Floating Emojis All Over Screen */
 .emojis-container {
     position: absolute;
     width: 100%;
@@ -75,25 +70,21 @@ body {
 
 .emoji {
     position: absolute;
-    font-size: 28px;
-    opacity: 0;
-    animation: floatUp linear infinite;
+    opacity: 0.9;
+    animation: fallDown linear infinite;
 }
 
-@keyframes floatUp {
-    0%   { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.6); }
-    15%  { opacity: 0.9; }
-    85%  { opacity: 0.9; }
-    100% { opacity: 0; transform: translateY(-150px) rotate(360deg) scale(1); }
+@keyframes fallDown {
+    0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.9; }
+    90%  { opacity: 0.9; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
 }
 
-/* Slides (hidden until start) */
 .slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     opacity: 0;
     transform: scale(0.95);
     transition: opacity 1.5s ease, transform 1.5s ease;
@@ -104,7 +95,7 @@ body {
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.1);
     backdrop-filter: blur(5px);
     z-index: 2;
 }
@@ -114,17 +105,6 @@ body {
     transform: scale(1);
 }
 
-/* Photos */
-.photo {
-    width: 85%;
-    max-height: 55%;
-    object-fit: cover;
-    border-radius: 25px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-    margin-bottom: 30px;
-}
-
-/* Text Styles */
 .text {
     font-size: 28px;
     color: white;
@@ -138,11 +118,10 @@ body {
     font-weight: bold;
 }
 
-/* Floating Hearts on Slides */
 .hearts {
-    font-size: 50px;
+    font-size: 60px;
     animation: floatHearts 4s ease-in-out infinite;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 @keyframes gentleGlow {
@@ -151,11 +130,10 @@ body {
 }
 
 @keyframes floatHearts {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50%      { transform: translateY(-25px) rotate(5deg); }
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50%     { transform: translateY(-30px) rotate(10deg); }
 }
 
-/* Navigation Buttons (hidden until start) */
 .nav-center {
     position: absolute;
     bottom: 40px;
@@ -184,10 +162,8 @@ body {
 .prev-btn:hover, .next-btn:hover {
     background: white;
     transform: translateY(-8px) scale(1.08);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* Subtle Background Pulse Effect */
 body::before {
     content: '';
     position: absolute;
@@ -198,6 +174,6 @@ body::before {
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50%      { opacity: 0.6; transform: scale(1.05); }
+    0%,100% { opacity: 0.3; transform: scale(1); }
+    50%     { opacity: 0.6; transform: scale(1.05); }
 }
