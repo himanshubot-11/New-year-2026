@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="slideshow">
-        <!-- Soft Romantic Piano Music (Royalty-Free) -->
+        <!-- Working Romantic Piano Music -->
         <audio id="bg-music" loop>
             <source src="https://cdn.pixabay.com/download/audio/2023/09/28/audio_8d8e0c0c0f.mp3?filename=romantic-piano-background-164716.mp3" type="audio/mpeg">
         </audio>
@@ -19,37 +19,43 @@
         <!-- Start Button -->
         <button id="start-btn" onclick="startExperience()">💕 Start 💕</button>
 
-        <!-- Floating Emojis Container -->
+        <!-- Floating Emojis -->
         <div class="emojis-container"></div>
 
-        <!-- Slides (Emoji Background Style) -->
+        <!-- Slides with Pink Bokeh Hearts/Confetti Images -->
         <div class="slide">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/d-pink-heart-wooden-table-blurred-background-defocused-bokeh-lights-valentine-s-day-greeting-card-love-concept-d-pink-305556271.jpg" alt="Pink hearts bokeh">
             <div class="text big-text">Meri Pasandida Aurat 💕</div>
             <div class="hearts">❤️ ❤️ ❤️</div>
         </div>
 
         <div class="slide">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/pink-blurred-heart-shaped-lights-texture-st-valentine-s-day-love-wedding-wallpaper-banner-design-pink-blurred-heart-shaped-350013083.jpg" alt="Pink heart lights">
             <div class="text">Har lamha tere saath jaise jadoo hai...</div>
             <div class="hearts">✨ 💖 ✨</div>
         </div>
 
         <div class="slide">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/soft-romantic-valentines-day-background-pink-hearts-glitter-dreamy-surface-delicate-filled-shimmering-ambiance-345740947.jpg" alt="Pink hearts glitter">
             <div class="text">Tu meri duniya ko roz roshan karti hai</div>
             <div class="hearts">🌟 ❤️ 🌟</div>
         </div>
 
         <div class="slide">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/colorful-heart-shaped-confetti-cascades-open-envelope-creating-joyful-atmosphere-against-soft-pink-backdrop-falling-331257104.jpg" alt="Heart confetti falling">
             <div class="text big-text">Jaise hi 2025 khatam ho raha hai...</div>
             <div class="text">Main bas ye kehna chahta hoon...</div>
         </div>
 
         <div class="slide">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/romantic-pink-heart-flowers-soft-bokeh-background-valentines-day-love-card-calm-sweet-image-macro-356334119.jpg" alt="Pink heart flowers bokeh">
             <div class="text big-text">Happy New Year 2026</div>
             <div class="text">Meri Pyar, Meri Pasandida Aurat 👑💕</div>
             <div class="hearts">❤️💖❤️💖❤️</div>
         </div>
 
         <div class="slide">
+            <img class="photo" src="https://thumbs.dreamstime.com/b/romantic-bright-heart-shaped-bokeh-ai-generated-falling-confetti-glittering-valentines-day-abstract-background-346159763.jpg" alt="Falling hearts confetti">
             <div class="text">2026 mein tere saath aur zyada adventures ka intezar hai!</div>
             <div class="text big-text">Main Tujhe Hamesha Pyar Karta Hoon ❤️</div>
         </div>
@@ -83,24 +89,21 @@
         function startExperience() {
             music.play();
 
-            // Lots of large falling romantic emojis
+            // Falling romantic emojis
             const emojisList = ['❤️','💕','🥰','😘','🌹','💖','✨','😍','💋','🫶','🌸','💗','🌟','💞','🎉','🥂','❣️','🌺','💝'];
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i = 70; i++) {
                 const e = document.createElement('span');
                 e.className = 'emoji';
                 e.textContent = emojisList[Math.floor(Math.random() * emojisList.length)];
                 e.style.left = `${Math.random() * 100}%`;
-                e.style.top = `${-10 - Math.random() * 50}%`; // Start above screen
-                e.style.fontSize = `${30 + Math.random() * 40}px`;
+                e.style.fontSize = `${30 + Math.random() * 30}px`;
                 e.style.animationDelay = `${Math.random() * 10}s`;
-                e.style.animationDuration = `${15 + Math.random() * 15}s`;
+                e.style.animationDuration = `${12 + Math.random() * 12}s`;
                 container.appendChild(e);
             }
 
-            // Show first slide
             slides[0].classList.add('active');
 
-            // Hide start, show controls
             startBtn.style.display = 'none';
             muteBtn.style.display = 'block';
             navCenter.style.display = 'block';
@@ -119,7 +122,6 @@
             showSlide(current + dir);
         }
 
-        // Tap anywhere to next after start
         document.querySelector('.slideshow').addEventListener('click', (e) => {
             if (startBtn.style.display === 'none' && !e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
                 if (current < total - 1) changeSlide(1);
