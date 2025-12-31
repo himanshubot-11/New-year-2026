@@ -21,28 +21,7 @@ body {
     cursor: pointer;
 }
 
-#start-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95);
-    color: #ff1493;
-    border: 4px solid #ff1493;
-    padding: 20px 50px;
-    font-size: 32px;
-    font-weight: bold;
-    border-radius: 50px;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    cursor: pointer;
-    z-index: 15;
-}
-
-#start-btn:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
+/* Mute Button */
 #mute-btn {
     position: absolute;
     top: 15px;
@@ -57,9 +36,9 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     cursor: pointer;
     z-index: 10;
-    display: none;
 }
 
+/* Floating Emojis - Random Everywhere */
 .emojis-container {
     position: absolute;
     width: 100%;
@@ -70,17 +49,19 @@ body {
 
 .emoji {
     position: absolute;
-    opacity: 0.9;
-    animation: fallDown linear infinite;
+    font-size: 28px;
+    opacity: 0;
+    animation: floatUp linear infinite;
 }
 
-@keyframes fallDown {
-    0%   { transform: translateY(-100px) rotate(0deg); opacity: 0; }
-    10%  { opacity: 0.9; }
-    90%  { opacity: 0.9; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+@keyframes floatUp {
+    0%   { opacity: 0; transform: translateY(100vh) rotate(0deg) scale(0.6); }
+    15%  { opacity: 0.9; }
+    85%  { opacity: 0.9; }
+    100% { opacity: 0; transform: translateY(-150px) rotate(360deg) scale(1); }
 }
 
+/* Slides */
 .slide {
     position: absolute;
     top: 0; left: 0;
@@ -95,7 +76,7 @@ body {
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.15);
     backdrop-filter: blur(5px);
     z-index: 2;
 }
@@ -103,6 +84,15 @@ body {
 .slide.active {
     opacity: 1;
     transform: scale(1);
+}
+
+.photo {
+    width: 85%;
+    max-height: 55%;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
 }
 
 .text {
@@ -119,9 +109,9 @@ body {
 }
 
 .hearts {
-    font-size: 60px;
+    font-size: 50px;
     animation: floatHearts 4s ease-in-out infinite;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 @keyframes gentleGlow {
@@ -131,9 +121,10 @@ body {
 
 @keyframes floatHearts {
     0%,100% { transform: translateY(0) rotate(0deg); }
-    50%     { transform: translateY(-30px) rotate(10deg); }
+    50%     { transform: translateY(-25px) rotate(5deg); }
 }
 
+/* IMPROVED NAVIGATION BUTTONS - NOW CLEARLY VISIBLE */
 .nav-center {
     position: absolute;
     bottom: 40px;
@@ -141,14 +132,13 @@ body {
     text-align: center;
     z-index: 3;
     pointer-events: none;
-    display: none;
 }
 
 .prev-btn, .next-btn {
     pointer-events: all;
-    background: rgba(255, 255, 255, 0.9);
-    color: #ff1493;
-    border: 3px solid #ff1493;
+    background: rgba(255, 255, 255, 0.85);   /* Much more opaque */
+    color: #ff69b4;                          /* Hot pink text for contrast */
+    border: 3px solid #ff69b4;                /* Pink border */
     padding: 16px 40px;
     font-size: 24px;
     font-weight: bold;
@@ -157,13 +147,22 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: all 0.4s ease;
     margin: 0 15px;
+    min-width: 200px;
+}
+
+.next-btn {
+    background: rgba(255, 255, 255, 0.95);   /* Even more solid for main button */
+    color: #ff1493;                          /* Deep pink */
+    border: 3px solid #ff1493;
 }
 
 .prev-btn:hover, .next-btn:hover {
-    background: white;
     transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    background: white;
 }
 
+/* Subtle Background Pulse */
 body::before {
     content: '';
     position: absolute;
@@ -174,6 +173,6 @@ body::before {
 }
 
 @keyframes pulse {
-    0%,100% { opacity: 0.5; transform: scale(1); }
-    50%     { opacity: 0.7; transform: scale(1.05); }
+    0%,100% { opacity: 0.3; transform: scale(1); }
+    50%     { opacity: 0.6; transform: scale(1.05); }
 }
