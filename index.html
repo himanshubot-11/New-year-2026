@@ -8,54 +8,52 @@
 </head>
 <body>
     <div class="slideshow">
-        <!-- Working Romantic Piano Music -->
-        <audio id="bg-music" loop>
-            <source src="https://cdn.pixabay.com/download/audio/2023/09/28/audio_8d8e0c0c0f.mp3?filename=romantic-piano-background-164716.mp3" type="audio/mpeg">
+        <!-- Background Music -->
+        <audio id="bg-music" loop autoplay volume="0.3">
+            <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
         </audio>
 
-        <!-- Mute Button -->
+        <!-- Mute/Unmute Button (small, discreet at top-right) -->
         <button id="mute-btn" onclick="toggleMute()">🔊</button>
 
-        <!-- Start Button -->
-        <button id="start-btn" onclick="startExperience()">💕 Start 💕</button>
-
-        <!-- Floating Emojis -->
+        <!-- Floating Emojis All Over Screen -->
         <div class="emojis-container"></div>
 
-        <!-- Slides with Pink Bokeh Hearts/Confetti Images -->
-        <div class="slide">
-            <img class="photo" src="https://thumbs.dreamstime.com/b/d-pink-heart-wooden-table-blurred-background-defocused-bokeh-lights-valentine-s-day-greeting-card-love-concept-d-pink-305556271.jpg" alt="Pink hearts bokeh">
+        <!-- Slides -->
+        <div class="slide active">
+            <img class="photo" src="https://media.gettyimages.com/id/1984822000/photo/couple-watching-fireworks.jpg?s=612x612&w=gi&k=20&c=6onbdcfeIoz6tXayKJmsN5E2WgJTYXMke7qTTsw7Paw=" alt="Couple watching fireworks">
             <div class="text big-text">Meri Pasandida Aurat 💕</div>
             <div class="hearts">❤️ ❤️ ❤️</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://thumbs.dreamstime.com/b/pink-blurred-heart-shaped-lights-texture-st-valentine-s-day-love-wedding-wallpaper-banner-design-pink-blurred-heart-shaped-350013083.jpg" alt="Pink heart lights">
+            <img class="photo" src="https://www.shutterstock.com/image-photo/beautiful-couple-holding-sparklers-celebrating-600nw-2390680061.jpg" alt="Couple with sparklers">
             <div class="text">Har lamha tere saath jaise jadoo hai...</div>
             <div class="hearts">✨ 💖 ✨</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://thumbs.dreamstime.com/b/soft-romantic-valentines-day-background-pink-hearts-glitter-dreamy-surface-delicate-filled-shimmering-ambiance-345740947.jpg" alt="Pink hearts glitter">
+            <img class="photo" src="https://media.istockphoto.com/id/2169723518/photo/couple-with-sparklers-on-a-new-years-eve.jpg?s=612x612&w=0&k=20&c=g1z8UnVu6OzrOFKj5RaHjR1qrg3u-HHhw7pe4c4M4ds=" alt="Couple with sparklers">
             <div class="text">Tu meri duniya ko roz roshan karti hai</div>
             <div class="hearts">🌟 ❤️ 🌟</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://thumbs.dreamstime.com/b/colorful-heart-shaped-confetti-cascades-open-envelope-creating-joyful-atmosphere-against-soft-pink-backdrop-falling-331257104.jpg" alt="Heart confetti falling">
+            <img class="photo" src="https://media.istockphoto.com/id/628125996/photo/celebrating-with-bubbly.jpg?s=612x612&w=0&k=20&c=UMeLX2IV3kWjZX0hRJwA2vatebKNdd0Xkj-zUFdi-6k=" alt="Couple toasting">
             <div class="text big-text">Jaise hi 2025 khatam ho raha hai...</div>
             <div class="text">Main bas ye kehna chahta hoon...</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://thumbs.dreamstime.com/b/romantic-pink-heart-flowers-soft-bokeh-background-valentines-day-love-card-calm-sweet-image-macro-356334119.jpg" alt="Pink heart flowers bokeh">
+            <img class="photo" src="https://www.shutterstock.com/image-photo/pink-glittering-2026-new-year-260nw-2704045279.jpg" alt="2026 glitter">
             <div class="text big-text">Happy New Year 2026</div>
             <div class="text">Meri Pyar, Meri Pasandida Aurat 👑💕</div>
             <div class="hearts">❤️💖❤️💖❤️</div>
         </div>
 
         <div class="slide">
-            <img class="photo" src="https://thumbs.dreamstime.com/b/romantic-bright-heart-shaped-bokeh-ai-generated-falling-confetti-glittering-valentines-day-abstract-background-346159763.jpg" alt="Falling hearts confetti">
+            <img class="photo" src="https://media.istockphoto.com/id/164483331/photo/romantic-couple-holding-a-red-heart.jpg?s=612x612&w=is&k=20&c=zJsPISErkgsAJe32WNDxW0nn560ROLmQz_M4a6Jx82U=" alt="Holding heart">
             <div class="text">2026 mein tere saath aur zyada adventures ka intezar hai!</div>
             <div class="text big-text">Main Tujhe Hamesha Pyar Karta Hoon ❤️</div>
         </div>
@@ -68,65 +66,65 @@
     </div>
 
     <script>
+        // Background Music Control
         const music = document.getElementById('bg-music');
         const muteBtn = document.getElementById('mute-btn');
-        const startBtn = document.getElementById('start-btn');
-        const navCenter = document.querySelector('.nav-center');
-        const container = document.querySelector('.emojis-container');
+        
+        function toggleMute() {
+            if (music.muted) {
+                music.muted = false;
+                muteBtn.textContent = '🔊';
+            } else {
+                music.muted = true;
+                muteBtn.textContent = '🔇';
+            }
+        }
+
+        // Generate 40 random floating emojis
+        const emojisContainer = document.querySelector('.emojis-container');
+        const emojis = ['💕', '❤️', '🥰', '😘', '🌹', '💖', '✨', '😍', '💋', '🫶', '🌸', '💗', '😊', '🌟', '💞'];
+        
+        for (let i = 0; i < 40; i++) {
+            const emoji = document.createElement('span');
+            emoji.classList.add('emoji');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + '%';
+            emoji.style.animationDelay = Math.random() * 10 + 's';
+            emoji.style.animationDuration = (10 + Math.random() * 10) + 's';
+            emojisContainer.appendChild(emoji);
+        }
+
+        // Navigation logic
+        let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
-        const total = slides.length;
+        const totalSlides = slides.length;
         const nextBtn = document.querySelector('.next-btn');
         const prevBtn = document.querySelector('.prev-btn');
-        let current = 0;
-
-        music.volume = 0.3;
-
-        function toggleMute() {
-            music.muted = !music.muted;
-            muteBtn.textContent = music.muted ? '🔇' : '🔊';
-        }
-
-        function startExperience() {
-            music.play();
-
-            // Falling romantic emojis
-            const emojisList = ['❤️','💕','🥰','😘','🌹','💖','✨','😍','💋','🫶','🌸','💗','🌟','💞','🎉','🥂','❣️','🌺','💝'];
-            for (let i = 0; i = 70; i++) {
-                const e = document.createElement('span');
-                e.className = 'emoji';
-                e.textContent = emojisList[Math.floor(Math.random() * emojisList.length)];
-                e.style.left = `${Math.random() * 100}%`;
-                e.style.fontSize = `${30 + Math.random() * 30}px`;
-                e.style.animationDelay = `${Math.random() * 10}s`;
-                e.style.animationDuration = `${12 + Math.random() * 12}s`;
-                container.appendChild(e);
-            }
-
-            slides[0].classList.add('active');
-
-            startBtn.style.display = 'none';
-            muteBtn.style.display = 'block';
-            navCenter.style.display = 'block';
-            prevBtn.style.display = 'none';
-        }
 
         function showSlide(n) {
-            slides[current].classList.remove('active');
-            current = (n + total) % total;
-            slides[current].classList.add('active');
-            prevBtn.style.display = current === 0 ? 'none' : 'block';
-            nextBtn.innerHTML = current === total - 1 ? 'Done ❤️' : '💕 Next 💕';
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+
+            prevBtn.style.display = currentSlide === 0 ? 'none' : 'block';
+            nextBtn.innerHTML = currentSlide === totalSlides - 1 ? 'Done ❤️' : '💕 Next 💕';
         }
 
-        function changeSlide(dir) {
-            showSlide(current + dir);
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
         }
 
-        document.querySelector('.slideshow').addEventListener('click', (e) => {
-            if (startBtn.style.display === 'none' && !e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
-                if (current < total - 1) changeSlide(1);
+        // Tap anywhere to next (except buttons)
+        document.querySelector('.slideshow').addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-center') && !e.target.closest('#mute-btn')) {
+                if (currentSlide < totalSlides - 1) {
+                    changeSlide(1);
+                }
             }
         });
+
+        // Initial state
+        prevBtn.style.display = 'none';
     </script>
 </body>
 </html>
