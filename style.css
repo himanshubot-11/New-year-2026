@@ -167,7 +167,7 @@ body::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(255,255,255,0.1), transparent);
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05), transparent);
     animation: pulse 15s infinite ease-in-out;
     pointer-events: none;
 }
